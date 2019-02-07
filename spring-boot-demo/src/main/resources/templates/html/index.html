@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/static/css/index.css}" type="text/css"/>
+</head>
+<body>
+    <h1>Hello Spring Boot</h1>
+    <h1 th:text="${person.id}"></h1>
+    <h1 th:text="${person.name}"></h1>
+    <h2 th:text="${person.brief}"></h2>
+    <h2 th:utext="${person.brief}"></h2>
+</body>
+</html>

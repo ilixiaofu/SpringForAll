@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 引入 schema约束 -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+            http://www.springframework.org/schema/beans    
+            http://www.springframework.org/schema/beans/spring-beans.xsd    
+            http://www.springframework.org/schema/context     
+            http://www.springframework.org/schema/context/spring-context.xsd    
+            http://www.springframework.org/schema/mvc    
+            http://www.springframework.org/schema/mvc/spring-mvc.xsd  
+            http://www.springframework.org/schema/tx   
+            http://www.springframework.org/schema/tx/spring-tx.xsd  
+            http://www.springframework.org/schema/aop  
+            http://www.springframework.org/schema/aop/spring-aop.xsd "
+       default-autowire="byName">
+
+    <!-- 配置Handler -->
+
+    <!-- 配置注解Handler -->
+    <!--<bean class="com.webapp.web.controller.ItemsController3"></bean>-->
+    <!--
+           开启注解扫描
+           (1) 到包里扫描类、方法、属性上面是否有注解
+     -->
+    <context:component-scan base-package="com.webapp.web.controller"></context:component-scan>
+    <!-- 配置mvc注解驱动可代替注解映射器和注解适配器-->
+    <mvc:annotation-driven></mvc:annotation-driven>
+
+    <!-- 配置非注解Handler -->
+    <bean id="itemsController1" name="/Items1.action" class="com.webapp.web.controller.ItemsController1"></bean>
+    <!-- 配置非注解Handler -->
+    <bean id="itemsController2" name="/Items2.action" class="com.webapp.web.controller.ItemsController2"></bean>
+
+    <!-- 处理器映射器 -->
+    <bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping"></bean>
+    <!-- 简单URL映射器 -->
+    <bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="mappings">
+            <props>
+                <prop key="/Items11.action">itemsController1</prop>
+                <prop key="/Items21.action">itemsController2</prop>
+            </props>
+        </property>
+    </bean>
+
+    <!-- 配置注解映射器 -->
+    <!--<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"></bean>-->
+
+    <!-- 处理器适配器-->
+
+    <!-- 配置注解适配器 -->
+    <!--<bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"></bean>-->
+
+    <!-- 非注解的适配器  须实现Controller接口 -->
+    <bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter"></bean>
+
+    <!-- 非注解的适配器  须实现HttpRequestHandler接口 -->
+    <bean class="org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter"></bean>
+
+    <!-- 视图解析器 -->
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"></bean>
+    <!--  -->
+
+</beans>
