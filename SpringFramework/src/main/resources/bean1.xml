@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 引入 schema约束 -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+            http://www.springframework.org/schema/beans    
+            http://www.springframework.org/schema/beans/spring-beans.xsd    
+            http://www.springframework.org/schema/context     
+            http://www.springframework.org/schema/context/spring-context.xsd    
+            http://www.springframework.org/schema/mvc    
+            http://www.springframework.org/schema/mvc/spring-mvc.xsd  
+            http://www.springframework.org/schema/tx   
+            http://www.springframework.org/schema/tx/spring-tx.xsd  
+            http://www.springframework.org/schema/aop  
+            http://www.springframework.org/schema/aop/spring-aop.xsd "
+       default-autowire="byName">
+
+
+    <!-- ioc入门 -->
+
+    <!-- 无惨构造创建对象 -->
+    <!--<bean id="user" class="com.webapp.ioc.User"></bean>-->
+
+    <!-- 使用静态工厂创建对象 -->
+    <!--<bean id="bean1" class="com.webapp.ioc.beanFactory" factory-method="getBean1"></bean>-->
+
+    <!-- 使用实例工厂创建对象 -->
+    <!-- 创建工厂对象 -->
+    <!--<bean id="bean2Factory" class="com.webapp.ioc.bean2Factory"></bean>-->
+    <!--<bean id="bean2" factory-bean="bean2Factory" factory-method="getBean2"></bean>-->
+
+    <!--
+    <bean id="user" class="com.webapp.ioc.User" scope="singleton">-->
+    <!-- scope="singleton" scope="prototype" scope="request" scope="session" scope="globalSession"-->
+    <!--</bean> -->
+
+    <!-- 属性注入 -->
+
+    <!-- 使用有参构造方法注入属性 -->
+    <!--
+        <bean id="propertyDemo1" class="com.webapp.property.PropertyDemo1">
+            <constructor-arg name="name" value="mary"></constructor-arg>
+        </bean>
+    -->
+
+    <!-- 使用set方法注入属性 -->
+    <!--
+        <bean id="propertyDemo1" class="com.webapp.property.PropertyDemo1">
+            <property name="name" value="tom"></property>
+        </bean>
+    -->
+
+    <!-- 使用set方法注入对象类型对象-->
+    <!--
+        <bean id="userDao" class="com.webapp.property.UserDao"></bean>
+
+        <bean id="userService" class="com.webapp.property.UserService">
+            <property name="userDao" ref="userDao"></property>
+        </bean>
+    -->
+
+    <!-- 使用P名称空间注入复杂类型-->
+    <!--
+        <bean id="person" class="com.webapp.property.Person" p:pname="xiaoli"></bean>
+    -->
+
+    <!-- 注入复杂类型属性-->
+    <!--
+        <bean id="person" class="com.webapp.property.Person">
+            <property name="strings" >
+                <list>
+                    <value>但看到</value>
+                    <value>速度发动机</value>
+                    <value>否v机房</value>
+                </list>
+            </property>
+        </bean>
+    -->
+
+</beans> 
